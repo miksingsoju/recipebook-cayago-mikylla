@@ -25,11 +25,11 @@ class RecipeIngredient(models.Model):
     Recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name="recipe"
+        related_name="ingredients"
     )
     Ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name="ingredients"
+        related_name="recipe"
     )
 
