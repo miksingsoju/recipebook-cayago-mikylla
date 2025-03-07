@@ -18,7 +18,7 @@ class Recipe(models.Model):
         return self.name
     
     def get_absolute_url(self):
-            return reverse('ledger:recipe-detail', args=[self.id])
+        return reverse('ledger:recipe-detail', args=[self.id])
 
 
 class RecipeIngredient(models.Model):
