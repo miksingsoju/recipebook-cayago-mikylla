@@ -72,9 +72,9 @@ def recipe_list(request):
     return render(request,'recipe_list.html',ctx)
 
 def recipe(request,num=1):
-    if num is 1:
+    if num == 1:
         recipe = ctx["recipes"][0]
-    elif num is 2:
+    elif num == 2:
         recipe = ctx["recipes"][1]
 
     return render(request,'recipe.html',{"recipe":recipe})
