@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+def custom_login(request):
+    return render(request, 'registration/login.html')
+
+
 @login_required
 def recipe_list(request):
     recipes = Recipe.objects.all()
