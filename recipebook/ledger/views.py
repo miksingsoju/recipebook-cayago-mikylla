@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.template import loader
 from .models import Recipe
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+@login_required
 def recipe_list(request):
     recipes = Recipe.objects.all()
     ctx = {
@@ -10,6 +12,7 @@ def recipe_list(request):
     }
     return render(request,'recipe_list.html',ctx)
 
+@login_required
 def recipe_detail(request,num=1):
     if num == 1:
         recipe = Recipe.objects.get(name="Recipe 1")

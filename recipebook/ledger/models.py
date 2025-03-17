@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=255)
 
@@ -19,6 +21,14 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
+    author = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        related_name="recipes"
+    )
+    createdOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.name
