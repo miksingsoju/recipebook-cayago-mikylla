@@ -23,12 +23,12 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    createdOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now=True)
 
     # Made the foreignKey accept NULL and Blank so that django would not have a seizure when I made the migrations
-    user = models.ForeignKey(
-        User, 
+    author = models.ForeignKey(
+        Profile, 
         on_delete=models.SET_NULL, 
         blank=True, null=True, 
         related_name='created_recipe')
@@ -41,18 +41,18 @@ class Recipe(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    Quantity = models.CharField(max_length=100)
-    Recipe = models.ForeignKey(
+    quantity = models.CharField(max_length=100)
+    recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
         related_name="ingredients"
     )
-    Ingredient = models.ForeignKey(
+    ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
         related_name="recipe"
     )
 
     def __str__(self):
-        return self.Quantity + ' of ' + self.Ingredient.name + ' in ' + self.Recipe.name
+        return self.quantity + ' of ' + self.ingredient.name + ' in ' + self.recipe.name
 
