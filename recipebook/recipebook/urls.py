@@ -18,8 +18,14 @@ from django.contrib import admin
 from django.urls import include, path 
 
 urlpatterns = [
-    path('', include('ledger.urls',namespace="ledger")),
     path('admin/', admin.site.urls),
+
+    # If I dont place a trailing backslash, Django can't find my login page, 
+    # but after logging out, Django looks for accountslogin so I decided to put both of them in
+    path('accounts/', include('django.contrib.auth.urls')), 
+    path('accounts', include('django.contrib.auth.urls')),
+    path('', include('ledger.urls',namespace="ledger")),
+
 
 ]
 
