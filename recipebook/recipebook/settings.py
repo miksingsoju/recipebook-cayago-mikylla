@@ -123,5 +123,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# Added settings for redirecting the user after login is made
+LOGIN_REDIRECT_URL = "/recipes/list"  # Redirect to index
+LOGOUT_REDIRECT_URL = "/accountslogin/"  # Redirect to login after logout
