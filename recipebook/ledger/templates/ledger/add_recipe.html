@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Add New Recipe</h2>
+
+<h2>Recipe</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ recipe_form.as_p }}
+  <input type="submit" name="recipe_submit" value="Submit">
+</form>
+
+<h2>Ingredient</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ ingredient_form.as_p }}
+  <input type="submit" name="ingredient_submit" value="Submit">
+</form>
+
+<h2>RecipeIngredient</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ recipe_ingredient_form.as_p }}
+  <input type="submit" name="recipe_ingredient_submit" value="Submit">
+</form>
+{% endblock %}

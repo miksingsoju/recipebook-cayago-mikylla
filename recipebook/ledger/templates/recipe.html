@@ -20,13 +20,12 @@
     {% endfor %}
 
 </ul>
-    
+
 {% else %}
     <li> No images </li>
 {% endif %}
 
-
-
+<a href="{% url 'ledger:add_image' recipe.pk %}">Upload Images</a>
 <hr>
 <h3> About the Author</h3>
 <p> {{recipe.author.bio}}</p>
