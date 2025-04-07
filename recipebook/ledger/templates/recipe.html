@@ -3,8 +3,7 @@
 
 {% block content %}
 
-<h2> {{ recipe }} by {{ recipe.author.name }}
-</h2>
+<h2> {{ recipe }} by {{ recipe.author.name }} </h2>
 <h3> Created On: {{recipe.createdOn}} </h3>
 <h3> Updated On: {{recipe.updatedOn}}</h3>
 <ul>
@@ -12,6 +11,21 @@
         <li>{{ recipe_ingredient.ingredient.name }} - {{ recipe_ingredient.quantity }}</li>
     {% endfor %}
 </ul>
+{%if images%}
+<ul>
+    {%for image in images%}
+    <li>
+    <img height="20%" width="20%" src="{{ image.image.url }}" alt="{{ image.description }}">
+    </li>
+    {% endfor %}
+
+</ul>
+    
+{% else %}
+    <li> No images </li>
+{% endif %}
+
+
 
 <hr>
 <h3> About the Author</h3>
